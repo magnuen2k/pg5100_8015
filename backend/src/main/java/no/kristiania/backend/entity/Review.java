@@ -3,6 +3,7 @@ package no.kristiania.backend.entity;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Review {
@@ -29,7 +30,7 @@ public class Review {
     private User author;
 
     @NotNull
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
     public Long getId() {
         return id;
@@ -71,11 +72,11 @@ public class Review {
         this.author = author;
     }
 
-    public LocalDate getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 }

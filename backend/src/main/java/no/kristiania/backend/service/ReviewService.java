@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -29,7 +30,7 @@ public class ReviewService {
             return false;
         }
 
-        LocalDate date = LocalDate.now();
+        LocalDateTime date = LocalDateTime.now();
 
         Review review = new Review();
         review.setAuthor(user);
@@ -51,15 +52,30 @@ public class ReviewService {
     }
 
     // Sorted by stars, could get sorting as parameter?
-    public List<Review> getAllReviews(long movieId, boolean starSort) {
-        String sql;
-        if(!starSort) {
-            sql = "SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.stars ASC";
+    public List<Review> getAllReviews(long movieId, boolean sortByRating, boolean sortAsc) {
+        TypedQuery<Review> query;
+        if(sortByRating) {
+            if(sortAsc) {
+                query = em.createQuery("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.stars ASC", Review.class);
+                System.out.println("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.stars ASC");
+            } else {
+                query = em.createQuery("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.stars DESC", Review.class);
+                System.out.println("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.stars DESC");
+            }
         } else {
-            sql = "SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.stars DESC";
+            if(sortAsc) {
+                query = em.createQuery("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.createdAt ASC", Review.class);
+                System.out.println("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.createdAt ASC");
+            } else {
+                query = em.createQuery("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.createdAt DESC", Review.class);
+                System.out.println("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.createdAt DESC");
+            }
         }
-        TypedQuery<Review> query = em.createQuery(sql, Review.class);
         query.setParameter(1, movieId);
+        List<Review> res = query.getResultList();
+        System.out.println(res.get(0).getCreatedAt());
         return query.getResultList();
     }
 }
+
+

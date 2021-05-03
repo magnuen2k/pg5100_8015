@@ -44,10 +44,14 @@
                          </c:forEach>
 
                         <h:form prependId="false">
-                            <h:outputText value="Sort by rating"/>
-                            <h:selectOneMenu value="#{movieController.starSort}">
-                                <f:selectItem itemValue="false" itemLabel="Min -> Max"/>
-                                <f:selectItem itemValue="true" itemLabel="Max -> Min"/>
+                            <h:outputText value="Sort by"/>
+                            <h:selectOneMenu value="#{movieController.sortByRating}">
+                                <f:selectItem itemValue="false" itemLabel="Time"/>
+                                <f:selectItem itemValue="true" itemLabel="Rating"/>
+                            </h:selectOneMenu>
+                            <h:selectOneMenu value="#{movieController.sortAsc}">
+                                <f:selectItem itemValue="true" itemLabel="ASC"/>
+                                <f:selectItem itemValue="false" itemLabel="DESC"/>
                             </h:selectOneMenu>
                             <h:commandButton value="sort" action="#{movieController.reload}"/>
                         </h:form>

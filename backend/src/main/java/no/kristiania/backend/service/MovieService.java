@@ -73,7 +73,6 @@ public class MovieService {
         List<Movie> movies = query.getResultList();
         movies.sort(Comparator.comparing(Movie::averageStars).reversed());
 
-        System.out.println(movies.get(0).getGenres().size());
         return movies;
     }
 }

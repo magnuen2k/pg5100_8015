@@ -24,7 +24,8 @@ public class MovieController implements Serializable {
     private int stars = 1;
     private String reviewText = "";
     private long selectedMovieId;
-    private boolean starSort = true;
+    private boolean sortByRating = false;
+    private boolean sortAsc = false;
 
     public List<Movie> getMovies() {
         return movieService.getAllMovies();
@@ -50,7 +51,7 @@ public class MovieController implements Serializable {
     }
 
     public List<Review> getReviews() {
-        return reviewService.getAllReviews(selectedMovieId, starSort);
+        return reviewService.getAllReviews(selectedMovieId, sortByRating, sortAsc);
     }
 
     public String reload() {
@@ -73,19 +74,27 @@ public class MovieController implements Serializable {
         this.stars = stars;
     }
 
-    public boolean isStarSort() {
-        return starSort;
-    }
-
-    public void setStarSort(boolean starSort) {
-        this.starSort = starSort;
-    }
-
     public long getSelectedMovieId() {
         return selectedMovieId;
     }
 
     public void setSelectedMovieId(long selectedMovieId) {
         this.selectedMovieId = selectedMovieId;
+    }
+
+    public boolean isSortByRating() {
+        return sortByRating;
+    }
+
+    public void setSortByRating(boolean sortByRating) {
+        this.sortByRating = sortByRating;
+    }
+
+    public boolean isSortAsc() {
+        return sortAsc;
+    }
+
+    public void setSortAsc(boolean sortAsc) {
+        this.sortAsc = sortAsc;
     }
 }
