@@ -22,9 +22,10 @@
 
         <h2>MovieMania</h2>
 
-        <div>
+        <div id="movies">
             <c:forEach var="movie" items="#{movieController.movies}">
-                <p>Title: <h:outputText value="#{movie.title}"/></p>
+                <p class="movieTitle">Title: <h:outputText value="#{movie.title}"/></p>
+                <p>Description: <h:outputText value="#{movie.id}"/></p>
                 <p>Description: <h:outputText value="#{movie.description}"/></p>
                 <p>Director: <h:outputText value="#{movie.director.name}"/></p>
                 <p>Genre:
