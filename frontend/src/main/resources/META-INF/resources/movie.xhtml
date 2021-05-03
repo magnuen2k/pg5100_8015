@@ -10,44 +10,58 @@
 <ui:composition template="layout.xhtml">
 
     <ui:define name="title">
-        <c:when test="#{!empty param['movieId']}">
-            <h:outputText value="#{movieController.getMovie(param['movieId']).title}"/>
-        </c:when>
+        <c:choose>
+            <c:when test="#{movieController.selectedMovieId != null}">
+                <h:outputText value="#{movieController.getMovie(movieController.selectedMovieId).title}"/>
+            </c:when>
+            <c:otherwise>
+                <h:outputText value="No Title"/>
+            </c:otherwise>
+        </c:choose>
     </ui:define>
-
 
     <ui:define name="content">
 
         <h2 id="movieTitle">MovieMania</h2>
-            <c:when test="#{!empty param['movieId']}">
+            <c:when test="#{movieController.selectedMovieId != null}">
                 <div class="movie" id="movie">
-                    <c:set var="movie" value="#{movieController.getMovie(param['movieId'])}" />
+                    <c:set var="movie" value="#{movieController.getMovie(movieController.selectedMovieId)}" />
                     <p>Title: <h:outputText value="#{movie.title}"/></p>
                     <p>Director: <h:outputText value="#{movie.director.name}"/></p>
                     <p>Genre: <h:outputText value="#{movie.genre.name}"/></p>
                     <p>Released: <h:outputText value="#{movie.yearOfRelease}"/></p>
-                    <p>Average rating: <h:outputText value="#{reviewController.getAverageRating(movie.id)}"/></p>
+                    <p>Average rating: <h:outputText value="#{movieController.getAverageRating(movie.id)}"/></p>
                     <div class="allReviews">
                         <h1>Reviews</h1>
-                        <c:forEach var="review" items="#{reviewController.getReviews(movie.id)}">
-                            <p>By: <h:outputText value="#{review.author.username}"/></p>
-                            <p>Review: <h:outputText value="#{review.reviewText}"/></p>
-                            <p>Stars: <h:outputText value="#{review.stars}"/></p>
-                        </c:forEach>
+                        <c:forEach var="review" items="#{movieController.reviews}">
+                             <p>By: <h:outputText value="#{review.author.username}"/></p>
+                             <p>Review: <h:outputText value="#{review.reviewText}"/></p>
+                             <p>Stars: <h:outputText value="#{review.stars}"/></p>
+                         </c:forEach>
+
+                        <h:form prependId="false">
+                            <h:outputText value="Sort by rating"/>
+                            <h:selectOneMenu value="#{movieController.starSort}">
+                                <f:selectItem itemValue="false" itemLabel="Min -> Max"/>
+                                <f:selectItem itemValue="true" itemLabel="Max -> Min"/>
+                            </h:selectOneMenu>
+                            <h:commandButton value="sort" action="#{movieController.reload}"/>
+                        </h:form>
+
                         <sec:authenticated>
-                                <div class="newreview">
-                                    <h:form prependId="false">
-                                        <h:inputText value="#{reviewController.reviewText}"/>
-                                        <h:selectOneMenu value="#{reviewController.stars}">
-                                            <f:selectItem itemLabel="1 Star" itemValue="1" />
-                                            <f:selectItem itemLabel="2 Stars" itemValue="2" />
-                                            <f:selectItem itemLabel="3 Stars" itemValue="3" />
-                                            <f:selectItem itemLabel="4 Stars" itemValue="4" />
-                                            <f:selectItem itemLabel="5 Stars" itemValue="5" />
-                                        </h:selectOneMenu>
-                                        <h:commandButton value="Add review" action="#{reviewController.addReview(userInfoController.userName)}" />
-                                    </h:form>
-                                </div>
+                            <div class="newreview">
+                                <h:form prependId="false">
+                                    <h:inputText value="#{movieController.reviewText}"/>
+                                    <h:selectOneMenu value="#{movieController.stars}">
+                                        <f:selectItem itemLabel="1 Star" itemValue="1" />
+                                        <f:selectItem itemLabel="2 Stars" itemValue="2" />
+                                        <f:selectItem itemLabel="3 Stars" itemValue="3" />
+                                        <f:selectItem itemLabel="4 Stars" itemValue="4" />
+                                        <f:selectItem itemLabel="5 Stars" itemValue="5" />
+                                    </h:selectOneMenu>
+                                    <h:commandButton value="Add review" action="#{movieController.addReview(userInfoController.userName)}" />
+                                </h:form>
+                            </div>
                         </sec:authenticated>
                     </div>
                 </div>

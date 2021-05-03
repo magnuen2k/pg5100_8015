@@ -51,8 +51,14 @@ public class ReviewService {
     }
 
     // Sorted by stars, could get sorting as parameter?
-    public List<Review> getAllReviews(long movieId) {
-        TypedQuery<Review> query = em.createQuery("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.stars ASC", Review.class);
+    public List<Review> getAllReviews(long movieId, boolean starSort) {
+        String sql;
+        if(!starSort) {
+            sql = "SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.stars ASC";
+        } else {
+            sql = "SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.stars DESC";
+        }
+        TypedQuery<Review> query = em.createQuery(sql, Review.class);
         query.setParameter(1, movieId);
         return query.getResultList();
     }

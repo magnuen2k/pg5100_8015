@@ -28,7 +28,7 @@
                 <p>Director: <h:outputText value="#{movie.director.name}"/></p>
                 <p>Genre: <h:outputText value="#{movie.genre.name}"/></p>
                 <p>Released: <h:outputText value="#{movie.yearOfRelease}"/></p>
-                <p>Average rating: <h:outputText value="#{reviewController.getAverageRating(movie.id)}"/></p>
+                <p>Average rating: <h:outputText value="#{movieController.getAverageRating(movie.id)}"/></p>
                 <h:form prependId="false">
                     <h:commandButton id="id-#{movie.id}" action="#{movieController.openMoviePage(movie.id)}" value="Click for more details"/>
                 </h:form>

@@ -18,15 +18,76 @@ public class MovieController implements Serializable {
     @Autowired
     private MovieService movieService;
 
+    @Autowired
+    private ReviewService reviewService;
+
+    private String reviewText;
+    private int stars = 1;
+    private long selectedMovieId;
+    private boolean starSort = true;
+
     public List<Movie> getMovies() {
         return movieService.getAllMovies();
     }
 
     public String openMoviePage(long movieId) {
-        return "/movie.jsf?movieId=" + movieId + "&faces-redirect=true";
+        selectedMovieId = movieId;
+        return "/movie.jsf?faces-redirect=true";
     }
 
     public Movie getMovie(long movieId) {
         return movieService.getMovie(movieId);
+    }
+
+    public double getAverageRating(long movieId) {
+        selectedMovieId = movieId;
+        return reviewService.getAverageReview(movieId);
+    }
+
+    // Give error if not working
+    public String addReview(String username) {
+        boolean ok = reviewService.addReview(selectedMovieId, username, reviewText, stars);
+        System.out.println(ok);
+        return reload();
+    }
+
+    public List<Review> getReviews() {
+        return reviewService.getAllReviews(selectedMovieId, starSort);
+    }
+
+    public String reload() {
+        return "/movie.jsf";
+    }
+
+    public String getReviewText() {
+        return reviewText;
+    }
+
+    public void setReviewText(String reviewText) {
+        this.reviewText = reviewText;
+    }
+
+    public int getStars() {
+        return stars;
+    }
+
+    public void setStars(int stars) {
+        this.stars = stars;
+    }
+
+    public boolean isStarSort() {
+        return starSort;
+    }
+
+    public void setStarSort(boolean starSort) {
+        this.starSort = starSort;
+    }
+
+    public long getSelectedMovieId() {
+        return selectedMovieId;
+    }
+
+    public void setSelectedMovieId(long selectedMovieId) {
+        this.selectedMovieId = selectedMovieId;
     }
 }

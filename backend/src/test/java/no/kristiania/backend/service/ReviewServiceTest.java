@@ -75,6 +75,6 @@ public class ReviewServiceTest extends ServiceTestBase{
         reviewService.addReview(movieId, "test", "review text comes here", 2);
         reviewService.addReview(movieId, "test", "review text comes here", 3);
 
-        assertEquals(3, reviewService.getAllReviews(movieId).size());
+        assertEquals(3, reviewService.getAllReviews(movieId, true).size());
     }
 }
