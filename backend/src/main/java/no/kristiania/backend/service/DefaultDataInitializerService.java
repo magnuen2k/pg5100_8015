@@ -84,17 +84,28 @@ public class DefaultDataInitializerService {
         Long fantasy = attempt(() -> genreService.createGenre("Fantasy"));
         Long sciFi = attempt(() -> genreService.createGenre("Sci-Fi"));
 
+        String d1 = "An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.";
+        String d2 = "A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco.";
+        String d3 = "A couple of high school grads spend one final night cruising the strip with their buddies before they go off to college.";
+        String d4 = "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.";
+        String d5 = "The Bride must kill her ex-boss and lover Bill who betrayed her at her wedding rehearsal, shot her in the head and took away her unborn daughter. But first, she must make the other four members of the Deadly Viper Assassination Squad suffer.";
+        String d6 = "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.";
+        String d7 = "A young programmer is selected to participate in a ground-breaking experiment in synthetic intelligence by evaluating the human qualities of a highly advanced humanoid A.I.";
+        String d8 = "An astronaut becomes stranded on Mars after his team assume him dead, and must rely on his ingenuity to find a way to signal to Earth that he is alive.";
+        String d9 = "As the Mayan kingdom faces its decline, a young man is taken on a perilous journey to a world ruled by fear and oppression.";
+        String d10 = "In a self-destructing world, a vengeful Australian policeman sets out to stop a violent motorcycle gan";
+
         // Add movies
-        Long movie1 = attempt(() -> movieService.createMovie("The Godfather", p8, 1972, Arrays.asList(crime, drama), Arrays.asList(p21, p2)));
-        Long movie2 = attempt(() -> movieService.createMovie("Casablanca", p24, 1942, Arrays.asList(drama, romance, war), Arrays.asList(p14, p15, p26)));
-        Long movie3 = attempt(() -> movieService.createMovie("American Graffiti", p9, 1973, Arrays.asList(comedy, drama), Arrays.asList(p30, p32, p27)));
-        Long movie4 = attempt(() -> movieService.createMovie("Pulp Fiction", p28, 1994, Arrays.asList(crime, drama), Arrays.asList(p18, p34, p33)));
-        Long movie5 = attempt(() -> movieService.createMovie("Kill Bill: The Whole Bloody Affair", p28, 2011, Arrays.asList(crime, action, thriller), Arrays.asList(p34, p35, p6)));
-        Long movie6 = attempt(() -> movieService.createMovie("Star Wars: Episode IV - A New Hope", p9, 1977, Arrays.asList(adventure, action, fantasy, sciFi), Arrays.asList(p20, p12, p5)));
-        Long movie7 = attempt(() -> movieService.createMovie("Ex Machina", p3, 2014, Arrays.asList(drama, thriller, sciFi), Arrays.asList(p4, p7, p25)));
-        Long movie8 = attempt(() -> movieService.createMovie("The Martian", p31, 2015, Arrays.asList(drama, adventure, sciFi), Arrays.asList(p22, p16, p19)));
-        Long movie9 = attempt(() -> movieService.createMovie("Apocalypto", p23, 2006, Arrays.asList(drama, adventure, action, thriller), Arrays.asList(p11, p29)));
-        Long movie10 = attempt(() -> movieService.createMovie("Mad Max", p10, 1979, Arrays.asList(sciFi, adventure, action, thriller), Arrays.asList(p23, p17, p13)));
+        Long movie1 = attempt(() -> movieService.createMovie("The Godfather", p8, 1972, Arrays.asList(crime, drama), Arrays.asList(p21, p2), d1));
+        Long movie2 = attempt(() -> movieService.createMovie("Casablanca", p24, 1942, Arrays.asList(drama, romance, war), Arrays.asList(p14, p15, p26), d2));
+        Long movie3 = attempt(() -> movieService.createMovie("American Graffiti", p9, 1973, Arrays.asList(comedy, drama), Arrays.asList(p30, p32, p27), d3));
+        Long movie4 = attempt(() -> movieService.createMovie("Pulp Fiction", p28, 1994, Arrays.asList(crime, drama), Arrays.asList(p18, p34, p33), d4));
+        Long movie5 = attempt(() -> movieService.createMovie("Kill Bill: The Whole Bloody Affair", p28, 2011, Arrays.asList(crime, action, thriller), Arrays.asList(p34, p35, p6), d5));
+        Long movie6 = attempt(() -> movieService.createMovie("Star Wars: Episode IV - A New Hope", p9, 1977, Arrays.asList(adventure, action, fantasy, sciFi), Arrays.asList(p20, p12, p5), d6));
+        Long movie7 = attempt(() -> movieService.createMovie("Ex Machina", p3, 2014, Arrays.asList(drama, thriller, sciFi), Arrays.asList(p4, p7, p25), d7));
+        Long movie8 = attempt(() -> movieService.createMovie("The Martian", p31, 2015, Arrays.asList(drama, adventure, sciFi), Arrays.asList(p22, p16, p19), d8));
+        Long movie9 = attempt(() -> movieService.createMovie("Apocalypto", p23, 2006, Arrays.asList(drama, adventure, action, thriller), Arrays.asList(p11, p29), d9));
+        Long movie10 = attempt(() -> movieService.createMovie("Mad Max", p10, 1979, Arrays.asList(sciFi, adventure, action, thriller), Arrays.asList(p23, p17, p13), d10));
 
         // Add reviews
         attempt(() -> reviewService.addReview(movie1, "test", "very good movie", 5));

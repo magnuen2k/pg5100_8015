@@ -25,6 +25,7 @@
         <div>
             <c:forEach var="movie" items="#{movieController.movies}">
                 <p>Title: <h:outputText value="#{movie.title}"/></p>
+                <p>Description: <h:outputText value="#{movie.description}"/></p>
                 <p>Director: <h:outputText value="#{movie.director.name}"/></p>
                 <p>Genre:
                     <c:forEach var="genre" items="#{movie.genres}">

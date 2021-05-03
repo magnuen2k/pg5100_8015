@@ -3,6 +3,7 @@ package no.kristiania.backend.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -14,6 +15,7 @@ public class Genre {
     private Long id;
 
     @NotBlank
+    @Size(max = 20)
     private String name;
 
     @ManyToMany(mappedBy = "genres", cascade = CascadeType.ALL)

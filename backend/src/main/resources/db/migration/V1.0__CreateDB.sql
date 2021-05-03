@@ -1,11 +1,11 @@
 create sequence hibernate_sequence start with 1 increment by 1;
-create table genre (id bigint not null, name varchar(255), primary key (id));
-create table movie (id bigint not null, title varchar(255), year_of_release integer not null, director_id bigint not null, primary key (id));
+create table genre (id bigint not null, name varchar(20), primary key (id));
+create table movie (id bigint not null, description varchar(300), title varchar(50), year_of_release integer not null, director_id bigint not null, primary key (id));
 create table movie_actors (acting_in_id bigint not null, actors_id bigint not null);
 create table movie_genres (movies_id bigint not null, genres_id bigint not null);
-create table person (id bigint not null, name varchar(255), primary key (id));
+create table person (id bigint not null, name varchar(64), primary key (id));
 create table person_director_for (person_id bigint not null, director_for_id bigint not null);
-create table review (id bigint not null, created_at date not null, review_text varchar(255), stars integer not null check (stars<=5 AND stars>=1), author_username varchar(255) not null, movie_id bigint not null, primary key (id));
+create table review (id bigint not null, created_at date not null, review_text varchar(300), stars integer not null check (stars<=5 AND stars>=1), author_username varchar(255) not null, movie_id bigint not null, primary key (id));
 create table user_roles (user_username varchar(255) not null, roles varchar(255));
 create table users (username varchar(64) not null, email varchar(255), enabled boolean not null, password varchar(255), primary key (username));
 alter table person_director_for add constraint UK_6utvgryit209l6dbvpg8216ci unique (director_for_id);

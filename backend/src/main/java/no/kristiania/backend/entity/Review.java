@@ -21,7 +21,7 @@ public class Review {
     private Movie movie;
 
     @NotBlank
-    // Size of review text?
+    @Size(max = 300)
     private String reviewText;
 
     @NotNull

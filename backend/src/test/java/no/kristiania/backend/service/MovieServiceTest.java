@@ -31,7 +31,7 @@ public class MovieServiceTest extends ServiceTestBase {
         Long directorId = personService.createPerson("test name");
         Long actorId = personService.createPerson("test actor");
         Long genreId = genreService.createGenre("comedy");
-        Long id = movieService.createMovie("Test Title", directorId, 2004,  Arrays.asList(genreId), Arrays.asList(actorId));
+        Long id = movieService.createMovie("Test Title", directorId, 2004,  Arrays.asList(genreId), Arrays.asList(actorId), "nice desc");
         assertNotNull(id);
     }
 

@@ -3,6 +3,7 @@ package no.kristiania.backend.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -14,6 +15,7 @@ public class Person {
     private Long id;
 
     @NotBlank
+    @Size(max = 64)
     private String name;
 
     @ManyToMany(mappedBy = "actors", cascade = CascadeType.ALL)

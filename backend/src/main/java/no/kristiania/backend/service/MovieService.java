@@ -22,7 +22,7 @@ public class MovieService {
     @Autowired
     private EntityManager em;
 
-    public Long createMovie(String title, long directorId, int yearOfRelease, List<Long> genreIds, List<Long> actorIds) {
+    public Long createMovie(String title, long directorId, int yearOfRelease, List<Long> genreIds, List<Long> actorIds, String description) {
 
         Person director = em.find(Person.class, directorId);
 
@@ -48,6 +48,7 @@ public class MovieService {
         movie.setYearOfRelease(yearOfRelease);
         movie.setGenres(genres);
         movie.setActors(actors);
+        movie.setDescription(description);
 
         em.persist(movie);
         return movie.getId();

@@ -3,6 +3,7 @@ package no.kristiania.backend.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class Movie {
     private Long id;
 
     @NotBlank
-    // Max size?
+    @Size(max = 50)
     private String title;
 
     @NotNull
@@ -23,6 +24,10 @@ public class Movie {
 
     @NotNull
     private int yearOfRelease;
+
+    @NotBlank
+    @Size(max = 300)
+    private String description;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     private List<Review> reviews;
@@ -56,6 +61,14 @@ public class Movie {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getTitle() {
