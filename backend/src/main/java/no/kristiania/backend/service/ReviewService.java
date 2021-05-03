@@ -1,8 +1,8 @@
-package no.kristiania.service;
+package no.kristiania.backend.service;
 
-import no.kristiania.entity.Movie;
-import no.kristiania.entity.Review;
-import no.kristiania.entity.User;
+import no.kristiania.backend.entity.Movie;
+import no.kristiania.backend.entity.Review;
+import no.kristiania.backend.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package no.kristiania.service;
+package no.kristiania.backend.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;

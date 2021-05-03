@@ -1,6 +1,6 @@
-package no.kristiania.service;
+package no.kristiania.backend.service;
 
-import no.kristiania.StubApplication;
+import no.kristiania.backend.StubApplication;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

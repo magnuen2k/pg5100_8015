@@ -1,6 +1,6 @@
 package no.kristiania.frontend.controller;
 
-import no.kristiania.service.UserService;
+import no.kristiania.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

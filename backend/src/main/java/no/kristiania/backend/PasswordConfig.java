@@ -1,4 +1,4 @@
-package no.kristiania;
+package no.kristiania.backend;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

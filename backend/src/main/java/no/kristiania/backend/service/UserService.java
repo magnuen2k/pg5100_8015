@@ -1,6 +1,6 @@
-package no.kristiania.service;
+package no.kristiania.backend.service;
 
-import no.kristiania.entity.User;
+import no.kristiania.backend.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,15 +1,13 @@
-package no.kristiania.service;
+package no.kristiania.backend.service;
 
-import no.kristiania.entity.Genre;
-import no.kristiania.entity.Movie;
-import no.kristiania.entity.Person;
+import no.kristiania.backend.entity.Genre;
+import no.kristiania.backend.entity.Movie;
+import no.kristiania.backend.entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import java.util.List;
 
 @Service
 @Transactional

@@ -1,4 +1,4 @@
-package no.kristiania.entity;
+package no.kristiania.backend.entity;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;

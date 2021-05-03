@@ -1,4 +1,4 @@
-package no.kristiania.entity;
+package no.kristiania.backend.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

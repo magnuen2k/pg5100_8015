@@ -1,4 +1,4 @@
-package no.kristiania.entity;
+package no.kristiania.backend.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
