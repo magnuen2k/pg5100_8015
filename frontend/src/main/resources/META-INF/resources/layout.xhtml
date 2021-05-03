@@ -24,14 +24,13 @@
 <body>
 
 <sec:authenticated>
-    <p><h:outputText value="Welcome, #{userInfoController.userName}"/></p>
     <a id="logoutId" href="logout" class="btn">Log Out</a>
 </sec:authenticated>
 
 <a id="homeId" href="index.jsf" class="btn">Home</a>
 
 <sec:anonymous>
-    <p>You are not logged in</p>
+    <p>You have to log in</p>
     <a id="linkToLoginId" href="login.jsf" class="btn">Log In</a>
     <a id="linkToSignupId" href="signup.jsf" class="btn" >Sign Up</a>
 </sec:anonymous>

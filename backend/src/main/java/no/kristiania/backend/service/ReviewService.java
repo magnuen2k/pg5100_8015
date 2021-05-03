@@ -37,15 +37,14 @@ public class ReviewService {
         review.setReviewText(reviewText);
         review.setStars(stars);
         review.setCreatedAt(date);
+        movie.setReviews(review);
 
         em.persist(review);
         return true;
     }
 
     public double getAverageReview(long movieId) {
-        Query query = em.createQuery("SELECT AVG(r.stars) FROM Review r WHERE r.movie.id = ?1 ");
-        query.setParameter(1, movieId);
-        return (Double) query.getSingleResult();
+        return em.find(Movie.class, movieId).averageStars();
     }
 
     // Sorted by stars, could get sorting as parameter?

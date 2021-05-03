@@ -3,11 +3,16 @@ package no.kristiania.backend.service;
 import no.kristiania.backend.entity.Genre;
 import no.kristiania.backend.entity.Movie;
 import no.kristiania.backend.entity.Person;
+import no.kristiania.backend.entity.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @Service
 @Transactional
@@ -42,8 +47,14 @@ public class MovieService {
         return true;
     }
 
-    /*public List<Movie> getAllMovies() {
-        TypedQuery<Movie> query = em.createQuery("SELECT m FROM Movie m ORDER BY m.")
-    }*/
+    public Movie getMovie(long movieId) {
+        return em.find(Movie.class, movieId);
+    }
 
+    public List<Movie> getAllMovies() {
+        TypedQuery<Movie> query = em.createQuery("SELECT m FROM Movie m", Movie.class);
+        List<Movie> movies = query.getResultList();
+        movies.sort(Comparator.comparing(Movie::averageStars).reversed());
+        return movies;
+    }
 }

@@ -16,9 +16,24 @@
 
     <ui:define name="content">
 
+        <sec:authenticated>
+            <p><h:outputText value="Welcome, #{userInfoController.userName}!"/></p>
+        </sec:authenticated>
+
         <h2>MovieMania</h2>
 
-        <h2>Search comes here</h2>
+        <div>
+            <c:forEach var="movie" items="#{movieController.movies}">
+                <p>Title: <h:outputText value="#{movie.title}"/></p>
+                <p>Director: <h:outputText value="#{movie.director.name}"/></p>
+                <p>Genre: <h:outputText value="#{movie.genre.name}"/></p>
+                <p>Released: <h:outputText value="#{movie.yearOfRelease}"/></p>
+                <p>Average rating: <h:outputText value="#{movieController.getAverageRating(movie.id)}"/></p>
+                <h:form prependId="false">
+                    <h:commandButton id="id-#{movie.id}" action="#{movieController.openMoviePage(movie.id)}" value="Click for more details"/>
+                </h:form>
+            </c:forEach>
+        </div>
 
     </ui:define>
 

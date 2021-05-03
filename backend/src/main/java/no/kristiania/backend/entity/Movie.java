@@ -24,10 +24,10 @@ public class Movie {
     @NotNull
     private int yearOfRelease;
 
-    @OneToMany
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     private List<Review> reviews;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "actingIn", cascade = CascadeType.ALL)
     private List<Person> actors;
 
     @ManyToOne
@@ -36,6 +36,17 @@ public class Movie {
     public Movie() {
         actors = new ArrayList<>();
         reviews = new ArrayList<>();
+    }
+
+    public double averageStars() {
+        if(reviews.size() < 1) {
+            return 0;
+        }
+        double stars = 0;
+        for(Review r : reviews) {
+            stars += r.getStars();
+        }
+        return stars / reviews.size();
     }
 
     public Long getId() {
@@ -74,8 +85,8 @@ public class Movie {
         return reviews;
     }
 
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
+    public void setReviews(Review review) {
+        this.reviews.add(review);
     }
 
     public List<Person> getActors() {
