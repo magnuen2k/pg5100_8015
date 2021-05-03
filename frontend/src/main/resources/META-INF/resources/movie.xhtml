@@ -58,17 +58,24 @@
 
                         <sec:authenticated>
                             <div class="newreview">
-                                <h:form prependId="false">
-                                    <h:inputText value="#{movieController.reviewText}"/>
-                                    <h:selectOneMenu value="#{movieController.stars}">
-                                        <f:selectItem itemLabel="1 Star" itemValue="1" />
-                                        <f:selectItem itemLabel="2 Stars" itemValue="2" />
-                                        <f:selectItem itemLabel="3 Stars" itemValue="3" />
-                                        <f:selectItem itemLabel="4 Stars" itemValue="4" />
-                                        <f:selectItem itemLabel="5 Stars" itemValue="5" />
-                                    </h:selectOneMenu>
-                                    <h:commandButton value="Add review" action="#{movieController.addReview(userInfoController.userName)}" />
-                                </h:form>
+                                <c:choose>
+                                    <c:when test="#{!movieController.reviewGivenByUser(userInfoController.userName)}">
+                                        <h:form prependId="false">
+                                            <h:inputText value="#{movieController.reviewText}"/>
+                                            <h:selectOneMenu value="#{movieController.stars}">
+                                                <f:selectItem itemLabel="1 Star" itemValue="1" />
+                                                <f:selectItem itemLabel="2 Stars" itemValue="2" />
+                                                <f:selectItem itemLabel="3 Stars" itemValue="3" />
+                                                <f:selectItem itemLabel="4 Stars" itemValue="4" />
+                                                <f:selectItem itemLabel="5 Stars" itemValue="5" />
+                                            </h:selectOneMenu>
+                                            <h:commandButton value="Add review" action="#{movieController.addReview(userInfoController.userName)}" />
+                                        </h:form>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p>You already gave a review</p>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </sec:authenticated>
                     </div>

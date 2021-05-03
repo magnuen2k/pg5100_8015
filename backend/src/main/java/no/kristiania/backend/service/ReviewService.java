@@ -57,23 +57,18 @@ public class ReviewService {
         if(sortByRating) {
             if(sortAsc) {
                 query = em.createQuery("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.stars ASC", Review.class);
-                System.out.println("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.stars ASC");
             } else {
                 query = em.createQuery("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.stars DESC", Review.class);
-                System.out.println("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.stars DESC");
             }
         } else {
             if(sortAsc) {
                 query = em.createQuery("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.createdAt ASC", Review.class);
-                System.out.println("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.createdAt ASC");
             } else {
                 query = em.createQuery("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.createdAt DESC", Review.class);
-                System.out.println("SELECT r FROM Review r WHERE r.movie.id = ?1 ORDER BY r.createdAt DESC");
             }
         }
         query.setParameter(1, movieId);
         List<Review> res = query.getResultList();
-        System.out.println(res.get(0).getCreatedAt());
         return query.getResultList();
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Named
@@ -26,6 +27,7 @@ public class MovieController implements Serializable {
     private long selectedMovieId;
     private boolean sortByRating = false;
     private boolean sortAsc = false;
+    private List<Review> reviews = new ArrayList<>();
 
     public List<Movie> getMovies() {
         return movieService.getAllMovies();
@@ -44,6 +46,15 @@ public class MovieController implements Serializable {
         return reviewService.getAverageReview(movieId);
     }
 
+    public boolean reviewGivenByUser(String username) {
+        for(Review review : reviews) {
+            if(review.getAuthor().getUsername().equals(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Give error if not working
     public String addReview(String username) {
         boolean ok = reviewService.addReview(selectedMovieId, username, reviewText, stars);
@@ -51,7 +62,8 @@ public class MovieController implements Serializable {
     }
 
     public List<Review> getReviews() {
-        return reviewService.getAllReviews(selectedMovieId, sortByRating, sortAsc);
+        reviews = reviewService.getAllReviews(selectedMovieId, sortByRating, sortAsc);
+        return reviews;
     }
 
     public String reload() {
