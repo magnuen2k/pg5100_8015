@@ -21,8 +21,8 @@ public class MovieController implements Serializable {
     @Autowired
     private ReviewService reviewService;
 
-    private String reviewText;
     private int stars = 1;
+    private String reviewText = "";
     private long selectedMovieId;
     private boolean starSort = true;
 
@@ -40,14 +40,12 @@ public class MovieController implements Serializable {
     }
 
     public double getAverageRating(long movieId) {
-        selectedMovieId = movieId;
         return reviewService.getAverageReview(movieId);
     }
 
     // Give error if not working
     public String addReview(String username) {
         boolean ok = reviewService.addReview(selectedMovieId, username, reviewText, stars);
-        System.out.println(ok);
         return reload();
     }
 
