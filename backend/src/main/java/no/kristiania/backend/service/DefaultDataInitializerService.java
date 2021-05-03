@@ -86,6 +86,15 @@ public class DefaultDataInitializerService {
 
         // Add movies
         Long movie1 = attempt(() -> movieService.createMovie("The Godfather", p8, 1972, Arrays.asList(crime, drama), Arrays.asList(p21, p2)));
+        Long movie2 = attempt(() -> movieService.createMovie("Casablanca", p24, 1942, Arrays.asList(drama, romance, war), Arrays.asList(p14, p15, p26)));
+        Long movie3 = attempt(() -> movieService.createMovie("American Graffiti", p9, 1973, Arrays.asList(comedy, drama), Arrays.asList(p30, p32, p27)));
+        Long movie4 = attempt(() -> movieService.createMovie("Pulp Fiction", p28, 1994, Arrays.asList(crime, drama), Arrays.asList(p18, p34, p33)));
+        Long movie5 = attempt(() -> movieService.createMovie("Kill Bill: The Whole Bloody Affair", p28, 2011, Arrays.asList(crime, action, thriller), Arrays.asList(p34, p35, p6)));
+        Long movie6 = attempt(() -> movieService.createMovie("Star Wars: Episode IV - A New Hope", p9, 1977, Arrays.asList(adventure, action, fantasy, sciFi), Arrays.asList(p20, p12, p5)));
+        Long movie7 = attempt(() -> movieService.createMovie("Ex Machina", p3, 2014, Arrays.asList(drama, thriller, sciFi), Arrays.asList(p4, p7, p25)));
+        Long movie8 = attempt(() -> movieService.createMovie("The Martian", p31, 2015, Arrays.asList(drama, adventure, sciFi), Arrays.asList(p22, p16, p19)));
+        Long movie9 = attempt(() -> movieService.createMovie("Apocalypto", p23, 2006, Arrays.asList(drama, adventure, action, thriller), Arrays.asList(p11, p29)));
+        Long movie10 = attempt(() -> movieService.createMovie("Mad Max", p10, 1979, Arrays.asList(sciFi, adventure, action, thriller), Arrays.asList(p23, p17, p13)));
 
         // Add reviews
         attempt(() -> reviewService.addReview(movie1, "test", "very good movie", 5));
