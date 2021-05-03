@@ -1,9 +1,6 @@
 package no.kristiania.backend.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -19,7 +16,7 @@ public class Genre {
     @NotBlank
     private String name;
 
-    @OneToMany
+    @ManyToMany(mappedBy = "genres", cascade = CascadeType.ALL)
     private List<Movie> movies;
 
     public Long getId() {

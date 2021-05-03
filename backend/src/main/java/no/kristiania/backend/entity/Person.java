@@ -16,7 +16,7 @@ public class Person {
     @NotBlank
     private String name;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "actors", cascade = CascadeType.ALL)
     private List<Movie> actingIn;
 
     @OneToMany

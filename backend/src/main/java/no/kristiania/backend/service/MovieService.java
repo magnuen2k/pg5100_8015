@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -21,17 +22,32 @@ public class MovieService {
     @Autowired
     private EntityManager em;
 
-    public Long createMovie(String title, long directorId, int yearOfRelease, long genreId) {
+    public Long createMovie(String title, long directorId, int yearOfRelease, List<Long> genreIds, List<Long> actorIds) {
 
-        // Check if movie already exists
-        Person person = em.find(Person.class, directorId);
-        Genre genre = em.find(Genre.class, genreId);
+        Person director = em.find(Person.class, directorId);
+
+        List<Genre> genres = new ArrayList<>();
+        for(Long genreId : genreIds ) {
+            Genre genre = em.find(Genre.class, genreId);
+            if(genre != null) {
+                genres.add(genre);
+            }
+        }
+
+        List<Person> actors = new ArrayList<>();
+        for(Long actorId : actorIds ) {
+            Person actor = em.find(Person.class, actorId);
+            if(actor != null) {
+               actors.add(actor);
+            }
+        }
 
         Movie movie = new Movie();
         movie.setTitle(title);
-        movie.setDirector(person);
+        movie.setDirector(director);
         movie.setYearOfRelease(yearOfRelease);
-        movie.setGenre(genre);
+        movie.setGenres(genres);
+        movie.setActors(actors);
 
         em.persist(movie);
         return movie.getId();
@@ -55,6 +71,8 @@ public class MovieService {
         TypedQuery<Movie> query = em.createQuery("SELECT m FROM Movie m", Movie.class);
         List<Movie> movies = query.getResultList();
         movies.sort(Comparator.comparing(Movie::averageStars).reversed());
+
+        System.out.println(movies.get(0).getGenres().size());
         return movies;
     }
 }

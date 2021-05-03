@@ -30,7 +30,7 @@ public class ReviewServiceTest extends ServiceTestBase{
     @Autowired
     private UserService userService;
 
-    @Test
+   /* @Test
     public void testAddReview() {
         // Create director and genre
         Long directorId = personService.createPerson("directorname");
@@ -76,5 +76,5 @@ public class ReviewServiceTest extends ServiceTestBase{
         reviewService.addReview(movieId, "test", "review text comes here", 3);
 
         assertEquals(3, reviewService.getAllReviews(movieId, true).size());
-    }
+    }*/
 }

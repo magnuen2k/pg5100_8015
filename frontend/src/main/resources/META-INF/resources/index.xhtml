@@ -26,7 +26,16 @@
             <c:forEach var="movie" items="#{movieController.movies}">
                 <p>Title: <h:outputText value="#{movie.title}"/></p>
                 <p>Director: <h:outputText value="#{movie.director.name}"/></p>
-                <p>Genre: <h:outputText value="#{movie.genre.name}"/></p>
+                <p>Genre:
+                    <c:forEach var="genre" items="#{movie.genres}">
+                        <h:outputText value="#{genre.name} "/>
+                    </c:forEach>
+                </p>
+                <p>Actors:
+                    <c:forEach var="actor" items="#{movie.actors}">
+                        <h:outputText value="#{actor.name} "/>
+                    </c:forEach>
+                </p>
                 <p>Released: <h:outputText value="#{movie.yearOfRelease}"/></p>
                 <p>Average rating: <h:outputText value="#{movieController.getAverageRating(movie.id)}"/></p>
                 <h:form prependId="false">

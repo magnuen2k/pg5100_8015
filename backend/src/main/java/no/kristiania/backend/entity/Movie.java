@@ -27,15 +27,16 @@ public class Movie {
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     private List<Review> reviews;
 
-    @ManyToMany(mappedBy = "actingIn", cascade = CascadeType.ALL)
+    @ManyToMany
     private List<Person> actors;
 
-    @ManyToOne
-    private Genre genre;
+    @ManyToMany
+    private List<Genre> genres;
 
     public Movie() {
         actors = new ArrayList<>();
         reviews = new ArrayList<>();
+        genres = new ArrayList<>();
     }
 
     public double averageStars() {
@@ -97,11 +98,11 @@ public class Movie {
         this.actors = actors;
     }
 
-    public Genre getGenre() {
-        return genre;
+    public List<Genre> getGenres() {
+        return genres;
     }
 
-    public void setGenre(Genre genre) {
-        this.genre = genre;
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
     }
 }
