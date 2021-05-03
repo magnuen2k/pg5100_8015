@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -30,51 +33,86 @@ public class ReviewServiceTest extends ServiceTestBase{
     @Autowired
     private UserService userService;
 
-   /* @Test
-    public void testAddReview() {
-        // Create director and genre
-        Long directorId = personService.createPerson("directorname");
-        Long genreId = genreService.createGenre("comedy");
-        boolean userCreated = userService.createUser("test", "password", "test@test.no");
+    private int count = 0;
+    private String uniqueName = "test_" + count++;
 
-        Long movieId = movieService.createMovie("title", directorId, 2020, genreId);
+   @Test
+    public void testAddReview() {
+        // Create director, actors and genre
+        Long directorId = personService.createPerson(uniqueName);
+        Long genreId = genreService.createGenre(uniqueName);
+        Long actorId1 = personService.createPerson(uniqueName);
+        Long actorId2 = personService.createPerson(uniqueName);
+
+        // Create user (Cannot use unique name here as we need to provide the username when adding a new review)
+        boolean userCreated = userService.createUser("test", "password", "test@test.no");
+        assertTrue(userCreated);
+
+        // Create movie
+        Long movieId = movieService.createMovie(uniqueName, directorId, 2010, Collections.singletonList(genreId), Arrays.asList(actorId1, actorId2), "test desc");
 
         boolean review = reviewService.addReview(movieId, "test", "review text comes here", 4);
 
         assertTrue(review);
-        // can check that getReviews will be returning 1 review
+
+        // Get all reviews for this movie and verify that the review has been added
+        assertEquals(1, reviewService.getAllReviews(movieId, true, true).size());
 
     }
+
 
     @Test
     public void testGetAverageStars() {
-        // Create director and genre
-        Long directorId = personService.createPerson("directorname");
-        Long genreId = genreService.createGenre("comedy");
+        // Create director, actors and genre
+        Long directorId = personService.createPerson(uniqueName);
+        Long genreId = genreService.createGenre(uniqueName);
+        Long actorId1 = personService.createPerson(uniqueName);
+        Long actorId2 = personService.createPerson(uniqueName);
+
+        // Create user (Cannot use unique name here as we need to provide the username when adding a new review)
         boolean userCreated = userService.createUser("test", "password", "test@test.no");
+        assertTrue(userCreated);
 
-        Long movieId = movieService.createMovie("title", directorId, 2020, genreId);
+        // Create movie
+        Long movieId = movieService.createMovie(uniqueName, directorId, 2010, Collections.singletonList(genreId), Arrays.asList(actorId1, actorId2), "test desc");
 
-        reviewService.addReview(movieId, "test", "review text comes here", 4);
-        reviewService.addReview(movieId, "test", "review text comes here", 2);
+        boolean review1 = reviewService.addReview(movieId, "test", "review text comes here", 4);
+        boolean review2 = reviewService.addReview(movieId, "test", "review text comes here", 2);
+        boolean review3 = reviewService.addReview(movieId, "test", "review text comes here", 3);
 
+        assertTrue(review1);
+        assertTrue(review2);
+        assertTrue(review3);
+
+        // Get all reviews for this movie and verify that the review has been added
         assertEquals(3, reviewService.getAverageReview(movieId));
-        // can check that getReviews will be returning 1 review
     }
+
 
     @Test
     public void testGetAllReviews() {
-        // Create director and genre
-        Long directorId = personService.createPerson("directorname");
-        Long genreId = genreService.createGenre("comedy");
+        // Create director, actors and genre
+        Long directorId = personService.createPerson(uniqueName);
+        Long genreId = genreService.createGenre(uniqueName);
+        Long actorId1 = personService.createPerson(uniqueName);
+        Long actorId2 = personService.createPerson(uniqueName);
+
+        // Create user (Cannot use unique name here as we need to provide the username when adding a new review)
         boolean userCreated = userService.createUser("test", "password", "test@test.no");
+        assertTrue(userCreated);
 
-        Long movieId = movieService.createMovie("title", directorId, 2020, genreId);
+        // Create movie
+        Long movieId = movieService.createMovie(uniqueName, directorId, 2010, Collections.singletonList(genreId), Arrays.asList(actorId1, actorId2), "test desc");
 
-        reviewService.addReview(movieId, "test", "review text comes here", 4);
-        reviewService.addReview(movieId, "test", "review text comes here", 2);
-        reviewService.addReview(movieId, "test", "review text comes here", 3);
+        boolean review1 = reviewService.addReview(movieId, "test", "review text comes here", 4);
+        boolean review2 = reviewService.addReview(movieId, "test", "review text comes here", 2);
+        boolean review3 = reviewService.addReview(movieId, "test", "review text comes here", 3);
+        boolean review4 = reviewService.addReview(movieId, "test", "review text comes here", 3);
+        boolean review5 = reviewService.addReview(movieId, "test", "review text comes here", 3);
 
-        assertEquals(3, reviewService.getAllReviews(movieId, true).size());
-    }*/
+        assertTrue(review1);
+
+        // Verify that all reviews got persisted
+        assertEquals(5, reviewService.getAllReviews(movieId, true, true).size());
+    }
 }
