@@ -18,15 +18,8 @@ public class MovieController implements Serializable {
     @Autowired
     private MovieService movieService;
 
-    @Autowired
-    private ReviewService reviewService;
-
     public List<Movie> getMovies() {
         return movieService.getAllMovies();
-    }
-
-    public double getAverageRating(long movieId) {
-        return reviewService.getAverageReview(movieId);
     }
 
     public String openMoviePage(long movieId) {
@@ -35,9 +28,5 @@ public class MovieController implements Serializable {
 
     public Movie getMovie(long movieId) {
         return movieService.getMovie(movieId);
-    }
-
-    public List<Review> getReviews(long movieId) {
-        return reviewService.getAllReviews(movieId);
     }
 }

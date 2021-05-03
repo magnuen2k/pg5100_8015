@@ -44,7 +44,10 @@ public class ReviewService {
     }
 
     public double getAverageReview(long movieId) {
-        return em.find(Movie.class, movieId).averageStars();
+        if(em.find(Movie.class, movieId) != null) {
+            return em.find(Movie.class, movieId).averageStars();
+        }
+        return 0;
     }
 
     // Sorted by stars, could get sorting as parameter?
