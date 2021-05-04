@@ -10,8 +10,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-// CLASS HEAVILY INSPIRED BY CODE FROM CLASS
-// LINK TO REPO
+// Code copied from lectures with small modifications to make it fit this project
+// https://github.com/arcuri82/testing_security_development_enterprise_systems/blob/master/intro/exercise-solutions/quiz-game/part-11/backend/src/test/java/org/tsdes/intro/exercises/quizgame/backend/service/ResetService.java
 @Service
 @Transactional
 public class ResetService {

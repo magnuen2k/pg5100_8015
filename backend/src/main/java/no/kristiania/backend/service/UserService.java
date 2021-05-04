@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.util.Collections;
 
-// More or less a copy from class
+// This class is copied from code from lectures with some small modifications to make it fit this project
+// https://github.com/arcuri82/testing_security_development_enterprise_systems/blob/master/intro/exercise-solutions/quiz-game/part-11/backend/src/main/java/org/tsdes/intro/exercises/quizgame/backend/service/UserService.java
+
 @Service
 @Transactional
 public class UserService {

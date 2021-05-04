@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.function.Supplier;
+
+// This class is extended from class shown in lecture
+// https://github.com/arcuri82/testing_security_development_enterprise_systems/blob/master/intro/exercise-solutions/quiz-game/part-11/backend/src/main/java/org/tsdes/intro/exercises/quizgame/backend/service/DefaultDataInitializerService.java
 
 @Service
 public class DefaultDataInitializerService {
@@ -112,6 +112,7 @@ public class DefaultDataInitializerService {
     }
 
     // This functions is copied from class
+    // https://github.com/arcuri82/testing_security_development_enterprise_systems/blob/master/intro/exercise-solutions/quiz-game/part-11/backend/src/main/java/org/tsdes/intro/exercises/quizgame/backend/service/DefaultDataInitializerService.java
     private  <T> T attempt(Supplier<T> lambda){
         try{
             return lambda.get();

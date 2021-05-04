@@ -12,7 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_CLASS;
 
 
-// HEAVILY INSPIRED FROM CLASS
+// Code copied from lectures with modifications to make it fit this project
+// https://github.com/arcuri82/testing_security_development_enterprise_systems/blob/master/intro/exercise-solutions/quiz-game/part-11/backend/src/test/java/org/tsdes/intro/exercises/quizgame/backend/service/DefaultDataInitializerServiceTest.java
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = StubApplication.class,
