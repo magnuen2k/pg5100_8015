@@ -66,9 +66,9 @@ public abstract class PageObject {
     public void clickAndWait(String id){
         WebElement element = driver.findElement(By.id(id));
         element.click();
-        try{Thread.sleep(200);} catch (Exception e){}
-        waitForPageToLoad();
         try{Thread.sleep(300);} catch (Exception e){}
+        waitForPageToLoad();
+        try{Thread.sleep(600);} catch (Exception e){}
     }
 
     public String getText(String id){

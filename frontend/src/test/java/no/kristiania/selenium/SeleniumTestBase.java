@@ -6,6 +6,7 @@ import no.kristiania.selenium.po.SignUpPO;
 import no.kristiania.selenium.po.SimilarMoviesPO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
@@ -38,6 +39,8 @@ public abstract class SeleniumTestBase {
         home.toStartingPage();
 
         assertTrue(home.isOnPage(), "Failed to start from Home Page");
+        assertNotNull(getDriver().findElement(By.id("id-46")));
+        assertNotNull(getDriver().findElement(By.id("id-55")));
     }
 
     @Test
