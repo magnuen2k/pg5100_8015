@@ -108,7 +108,7 @@ public abstract class SeleniumTestBase {
     @Test
     public void testStars() {
         // Get average stars from a movie
-        double averageStars = Double.parseDouble(home.getAverageStars("46"));
+        String averageStars = home.getAverageStars("46");
 
         // Sign up to able to leave a review
         SignUpPO signUpPO = home.toSignUp();
@@ -132,7 +132,7 @@ public abstract class SeleniumTestBase {
         home = moviePO.toHomePage();
 
         // Verify average stars has changed
-        assertTrue(Double.parseDouble(home.getAverageStars("46")) < averageStars);
+        assertNotEquals(averageStars, home.getAverageStars("46"));
     }
 
     @Test
