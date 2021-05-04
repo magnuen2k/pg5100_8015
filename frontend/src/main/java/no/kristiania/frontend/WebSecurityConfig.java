@@ -13,6 +13,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
+// Code extended from lectures, modifications made to fit this project
+// https://github.com/arcuri82/testing_security_development_enterprise_systems/blob/master/intro/exercise-solutions/quiz-game/part-11/frontend/src/main/java/org/tsdes/intro/exercises/quizgame/frontend/WebSecurityConfig.java
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -73,9 +76,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                     "FROM users x, user_roles y " +
                                     "WHERE x.username = ? and y.user_username = x.username "
                     )
-                    /*
-                        Note: in BCrypt, the "password" field also contains the salt
-                     */
                     .passwordEncoder(passwordEncoder);
         } catch (Exception e) {
             throw new RuntimeException(e);
