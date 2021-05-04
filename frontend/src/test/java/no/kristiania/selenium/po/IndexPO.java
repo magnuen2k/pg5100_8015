@@ -3,9 +3,11 @@ package no.kristiania.selenium.po;
 import no.kristiania.selenium.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+// Code extended but heavily modified from lectures
+// https://github.com/arcuri82/testing_security_development_enterprise_systems/blob/master/intro/exercise-solutions/quiz-game/part-11/frontend/src/test/java/org/tsdes/intro/exercises/quizgame/selenium/po/IndexPO.java
 
 public class IndexPO extends LayoutPO {
 

@@ -8,6 +8,11 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <!--
+        Code copied with modifications from lectures
+        https://github.com/arcuri82/testing_security_development_enterprise_systems/blob/master/intro/exercise-solutions/quiz-game/part-11/backend/pom.xml
+    -->
+
     <packaging>jar</packaging>
 
     <modelVersion>4.0.0</modelVersion>

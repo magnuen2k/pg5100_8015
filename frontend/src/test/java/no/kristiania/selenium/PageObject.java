@@ -12,7 +12,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-// BASICALLY COPIED FROM CLASS
+// Code extended from lectures, modified to fit this project
+// https://github.com/arcuri82/testing_security_development_enterprise_systems/blob/master/intro/exercise-solutions/quiz-game/part-11/frontend/src/test/java/org/tsdes/intro/exercises/quizgame/selenium/PageObject.java
 
 public abstract class PageObject {
 
@@ -74,12 +75,6 @@ public abstract class PageObject {
         return driver.findElement(By.id(id)).getText();
     }
 
-    public int getInteger(String id){
-        String text = getText(id);
-
-        return Integer.parseInt(text);
-    }
-
     public void setText(String id, String text){
         WebElement element = driver.findElement(By.id(id));
         element.clear();
@@ -88,7 +83,6 @@ public abstract class PageObject {
 
         assertEquals(text, element.getAttribute("value"));
     }
-
 
     protected Boolean waitForPageToLoad() {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;

@@ -4,8 +4,6 @@ import no.kristiania.selenium.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 public class MoviePO extends LayoutPO {
 
     public MoviePO (PageObject other) {
