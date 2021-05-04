@@ -26,15 +26,22 @@
             <c:when test="#{movieController.selectedMovieId != null}">
                 <div class="movie" id="movie">
                     <c:set var="movie" value="#{movieController.getMovie(movieController.selectedMovieId)}" />
-                    <p>Title: <h:outputText value="#{movie.title}"/></p>
+                    <p class="movieTitle">Title: <h:outputText value="#{movie.title}"/></p>
+                    <div class="movieDesc"><h:outputText value="#{movie.description}"/></div>
                     <p>Director: <h:outputText value="#{movie.director.name}"/></p>
                     <p>Genre:
                         <c:forEach var="genre" items="#{movie.genres}">
                             <h:outputText value="#{genre.name} "/>
                         </c:forEach>
                     </p>
+                    <p>Actors:
+                        <c:forEach var="actor" items="#{movie.actors}">
+                            <h:outputText value="#{actor.name} "/>
+                        </c:forEach>
+                    </p>
                     <p>Released: <h:outputText value="#{movie.yearOfRelease}"/></p>
                     <p>Average rating: <h:outputText value="#{movieController.getAverageRating(movie.id)}"/></p>
+                    <hr/>
                     <div class="allReviews">
                         <h1>Reviews</h1>
                         <c:forEach var="review" items="#{movieController.reviews}">
@@ -53,7 +60,7 @@
                                 <f:selectItem itemValue="true" itemLabel="ASC"/>
                                 <f:selectItem itemValue="false" itemLabel="DESC"/>
                             </h:selectOneMenu>
-                            <h:commandButton value="sort" action="#{movieController.reload}"/>
+                            <h:commandButton class="movieBtn" value="Sort" action="#{movieController.reload}"/>
                         </h:form>
 
                         <sec:authenticated>
@@ -69,7 +76,7 @@
                                                 <f:selectItem itemLabel="4 Stars" itemValue="4" />
                                                 <f:selectItem itemLabel="5 Stars" itemValue="5" />
                                             </h:selectOneMenu>
-                                            <h:commandButton id="reviewSubmitBtn" value="Add review" action="#{movieController.addReview(userInfoController.userName)}" />
+                                            <h:commandButton id="reviewSubmitBtn" class="movieBtn" value="Add review" action="#{movieController.addReview(userInfoController.userName)}" />
                                         </h:form>
                                     </c:when>
                                     <c:otherwise>

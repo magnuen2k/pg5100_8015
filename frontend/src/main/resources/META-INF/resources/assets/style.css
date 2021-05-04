@@ -1,0 +1,69 @@
+html, body {
+    margin: 0px;
+    background-color: #fbf9f9;
+    color: #27333b;
+    text-align: center;
+    position: relative;
+    font-size: 1.1em;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fcb560;
+}
+
+nav a {
+    padding: 1rem 2rem;
+    text-decoration: none;
+    color: #27333b;
+}
+
+.movieBtn {
+    transition-duration: 0.4s;
+    background-color: #5a6e85;
+    border: none;
+    color: #fbf9f9;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login{
+    height: 30px;
+    margin: 5px;
+    font-size: 1em;
+}
+
+.movie {
+    background-color: #e8e6e2;
+    border-radius: 5px;
+    padding: 1rem 0.5rem;
+    margin: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie p {
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.movieTitle {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.movieDesc {
+    font-size: 0.9em;
+    width: 30%;
+    border-radius: 5px;
+    padding: 1rem 3rem;
+}

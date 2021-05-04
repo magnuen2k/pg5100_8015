@@ -17,9 +17,8 @@ public class IndexPO extends LayoutPO {
         super(driver, host, port);
     }
 
-    public void clickLoginButton() {
-        WebElement loginButton = driver.findElement(By.id("linkToLoginId"));
-        loginButton.click();
+    public String getAverageStars(String movieId) {
+        return getDriver().findElement(By.id("averageRating-" + movieId)).getText();
     }
 
     public MoviePO toMoviePage(int movieId) {

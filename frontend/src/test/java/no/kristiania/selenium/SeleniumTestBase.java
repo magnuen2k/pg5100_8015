@@ -92,4 +92,34 @@ public abstract class SeleniumTestBase {
         // verify that review is there
         assertTrue(moviePO.verifyReview(reviewText));
     }
+
+    @Test
+    public void testStars() {
+        // Get average stars from a movie
+        double averageStars = Double.parseDouble(home.getAverageStars("46"));
+
+        // Sign up to able to leave a review
+        SignUpPO signUpPO = home.toSignUp();
+        home = signUpPO.createUser("Uniqueusername", "password", "test5@test.no");
+
+        // Should be logged in now
+        assertTrue(home.isLoggedIn());
+
+        // Navigate back to home page
+        home.toStartingPage();
+
+        // Go to same movie page
+        MoviePO moviePO = home.toMoviePage(46);
+
+        // Verify add review button is there
+        assertTrue(moviePO.canGiveReview());
+
+        moviePO.giveReview("New review for this movie!", "2");
+
+        // Navigate back to home page
+        home = moviePO.toHomePage();
+
+        // Verify average stars has changed
+        assertTrue(Double.parseDouble(home.getAverageStars("46")) < averageStars);
+    }
 }

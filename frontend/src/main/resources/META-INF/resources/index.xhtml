@@ -24,25 +24,26 @@
 
         <div id="movies">
             <c:forEach var="movie" items="#{movieController.movies}">
-                <p class="movieTitle">Title: <h:outputText value="#{movie.title}"/></p>
-                <p>Description: <h:outputText value="#{movie.id}"/></p>
-                <p>Description: <h:outputText value="#{movie.description}"/></p>
-                <p>Director: <h:outputText value="#{movie.director.name}"/></p>
-                <p>Genre:
-                    <c:forEach var="genre" items="#{movie.genres}">
-                        <h:outputText value="#{genre.name} "/>
-                    </c:forEach>
-                </p>
-                <p>Actors:
-                    <c:forEach var="actor" items="#{movie.actors}">
-                        <h:outputText value="#{actor.name} "/>
-                    </c:forEach>
-                </p>
-                <p>Released: <h:outputText value="#{movie.yearOfRelease}"/></p>
-                <p>Average rating: <h:outputText value="#{movieController.getAverageRating(movie.id)}"/></p>
-                <h:form prependId="false">
-                    <h:commandButton id="id-#{movie.id}" action="#{movieController.openMoviePage(movie.id)}" value="Click for more details"/>
-                </h:form>
+                <div class="movie">
+                    <p class="movieTitle">Title: <h:outputText value="#{movie.title}"/></p>
+                    <div class="movieDesc"><h:outputText value="#{movie.description}"/></div>
+                    <p>Director: <h:outputText value="#{movie.director.name}"/></p>
+                    <p>Genre:
+                        <c:forEach var="genre" items="#{movie.genres}">
+                            <h:outputText value="#{genre.name} "/>
+                        </c:forEach>
+                    </p>
+                    <p>Actors:
+                        <c:forEach var="actor" items="#{movie.actors}">
+                            <h:outputText value="#{actor.name} "/>
+                        </c:forEach>
+                    </p>
+                    <p>Released: <h:outputText value="#{movie.yearOfRelease}"/></p>
+                    <p>Average rating: <h:outputText id="averageRating-#{movie.id}" value="#{movieController.getAverageRating(movie.id)}"/></p>
+                    <h:form prependId="false">
+                        <h:commandButton id="id-#{movie.id}" class="movieBtn" action="#{movieController.openMoviePage(movie.id)}" value="Click for more details"/>
+                    </h:form>
+                </div>
             </c:forEach>
         </div>
 
