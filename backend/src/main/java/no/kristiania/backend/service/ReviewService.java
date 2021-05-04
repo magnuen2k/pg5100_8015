@@ -51,7 +51,6 @@ public class ReviewService {
         return 0;
     }
 
-    // Sorted by stars, could get sorting as parameter?
     public List<Review> getAllReviews(long movieId, boolean sortByRating, boolean sortAsc) {
         TypedQuery<Review> query;
         if(sortByRating) {
@@ -68,7 +67,6 @@ public class ReviewService {
             }
         }
         query.setParameter(1, movieId);
-        List<Review> res = query.getResultList();
         return query.getResultList();
     }
 }

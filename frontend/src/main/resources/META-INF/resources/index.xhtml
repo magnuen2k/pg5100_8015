@@ -35,7 +35,7 @@
                     </p>
                     <p>Actors:
                         <c:forEach var="actor" items="#{movie.actors}">
-                            <h:outputText value="#{actor.name} "/>
+                            <p class="actorName"><h:outputText value="#{actor.name} "/></p>
                         </c:forEach>
                     </p>
                     <p>Released: <h:outputText value="#{movie.yearOfRelease}"/></p>
