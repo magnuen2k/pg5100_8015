@@ -107,11 +107,49 @@ public class DefaultDataInitializerService {
         Long movie9 = attempt(() -> movieService.createMovie("Apocalypto", p23, 2006, Arrays.asList(drama, adventure, action, thriller), Arrays.asList(p11, p29), d9));
         Long movie10 = attempt(() -> movieService.createMovie("Mad Max", p10, 1979, Arrays.asList(sciFi, adventure, action, thriller), Arrays.asList(p23, p17, p13), d10));
 
+        // Users to review
+        attempt(() -> userService.createUser("foo", "bar", "foo@bar.no", "foo", "bar"));
+        attempt(() -> userService.createUser("foo_1", "bar", "foo@bar.no", "foo_1", "foo_1"));
+        attempt(() -> userService.createUser("foo_2", "bar", "foo@bar.no", "foo_2", "foo_2"));
+        attempt(() -> userService.createUser("foo_3", "bar", "foo@bar.no", "foo_3", "foo_3"));
+        attempt(() -> userService.createUser("foo_4", "bar", "foo@bar.no", "foo_4", "foo_4"));
+        attempt(() -> userService.createUser("foo_5", "bar", "foo@bar.no", "foo_5", "foo_5"));
+        attempt(() -> userService.createUser("foo_6", "bar", "foo@bar.no", "foo_6", "foo_6"));
+        attempt(() -> userService.createUser("foo_7", "bar", "foo@bar.no", "foo_7", "foo_7"));
+        attempt(() -> userService.createUser("foo_8", "bar", "foo@bar.no", "foo_8", "foo_8"));
+        attempt(() -> userService.createUser("foo_9", "bar", "foo@bar.no", "foo_9", "foo_9"));
+        attempt(() -> userService.createUser("foo_10", "bar", "foo@bar.no", "foo_10", "foo_10"));
+
+
         // Add reviews
-        attempt(() -> reviewService.addReview(movie1, "test", "Very good movie!", 5));
-        attempt(() -> reviewService.addReview(movie3, "test", "Not a fan...", 3));
-        attempt(() -> reviewService.addReview(movie6, "test", "Love this!!", 5));
-        attempt(() -> reviewService.addReview(movie4, "test", "Good one", 4));
+        attempt(() -> reviewService.addReview(movie1, "foo_2", "Very good movie!", 5));
+        attempt(() -> reviewService.addReview(movie1, "foo_9", "Very good", 5));
+        attempt(() -> reviewService.addReview(movie1, "foo_10", "Not my favorite..", 3));
+        attempt(() -> reviewService.addReview(movie1, "foo_3", "My favorite!", 5));
+        /*attempt(() -> reviewService.addReview(movie2, "foo_4", "Very good!", 5));
+        attempt(() -> reviewService.addReview(movie2, "foo_5", "Good!", 4));
+        attempt(() -> reviewService.addReview(movie2, "foo_8", "Not my favorite..", 3));*/
+        attempt(() -> reviewService.addReview(movie3, "foo_8", "Not a fan...", 3));
+        attempt(() -> reviewService.addReview(movie3, "foo_2", "Not a fan...", 2));
+        attempt(() -> reviewService.addReview(movie3, "foo_5", "Very nice", 4));
+        attempt(() -> reviewService.addReview(movie4, "foo_5", "Very nice", 4));
+        attempt(() -> reviewService.addReview(movie4, "foo_3", "Good one", 4));
+        attempt(() -> reviewService.addReview(movie5, "foo_9", "Nice one", 5));
+        attempt(() -> reviewService.addReview(movie5, "foo_1", "So good!", 5));
+        attempt(() -> reviewService.addReview(movie6, "foo_5", "Love this!!", 5));
+        attempt(() -> reviewService.addReview(movie7, "foo_4", "Love this!!", 5));
+        attempt(() -> reviewService.addReview(movie7, "foo_7", "Not my favorite..", 3));
+        attempt(() -> reviewService.addReview(movie7, "foo_7", "Not very nice", 2));
+        attempt(() -> reviewService.addReview(movie8, "foo_3", "So nice", 5));
+        attempt(() -> reviewService.addReview(movie8, "foo_2", "Nice one", 4));
+        attempt(() -> reviewService.addReview(movie9, "foo_5", "Nice", 4));
+        attempt(() -> reviewService.addReview(movie9, "foo_3", "Good one", 5));
+        attempt(() -> reviewService.addReview(movie9, "foo_8", "Not my favorite, but a good one!", 3));
+        attempt(() -> reviewService.addReview(movie10, "foo", "Nice", 5));
+        attempt(() -> reviewService.addReview(movie10, "foo_1", "Not my favorite..", 2));
+        attempt(() -> reviewService.addReview(movie10, "foo_2", "Very good", 5));
+        attempt(() -> reviewService.addReview(movie10, "foo_3", "Good", 4));
+        attempt(() -> reviewService.addReview(movie10, "foo_6", "Nice one", 4));
     }
 
     // This functions is copied from class
