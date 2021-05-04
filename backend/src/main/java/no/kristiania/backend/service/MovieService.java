@@ -59,7 +59,6 @@ public class MovieService {
             return false;
         }
 
-        // If this does not work make a query and set movie ID as parameter
         em.remove(em.find(Movie.class, movieId));
         return true;
     }
