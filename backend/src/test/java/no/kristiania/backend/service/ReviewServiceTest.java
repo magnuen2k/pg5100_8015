@@ -45,7 +45,7 @@ public class ReviewServiceTest extends ServiceTestBase{
         Long actorId2 = personService.createPerson(uniqueName);
 
         // Create user (Cannot use unique name here as we need to provide the username when adding a new review)
-        boolean userCreated = userService.createUser("test", "password", "test@test.no");
+        boolean userCreated = userService.createUser("test", "password", "test@test.no", "test", "test");
         assertTrue(userCreated);
 
         // Create movie
@@ -70,7 +70,7 @@ public class ReviewServiceTest extends ServiceTestBase{
         Long actorId2 = personService.createPerson(uniqueName);
 
         // Create user (Cannot use unique name here as we need to provide the username when adding a new review)
-        boolean userCreated = userService.createUser("test", "password", "test@test.no");
+        boolean userCreated = userService.createUser("test", "password", "test@test.no", "test", "test");
         assertTrue(userCreated);
 
         // Create movie
@@ -98,7 +98,7 @@ public class ReviewServiceTest extends ServiceTestBase{
         Long actorId2 = personService.createPerson(uniqueName);
 
         // Create user (Cannot use unique name here as we need to provide the username when adding a new review)
-        boolean userCreated = userService.createUser("test", "password", "test@test.no");
+        boolean userCreated = userService.createUser("test", "password", "test@test.no", "test", "test");
         assertTrue(userCreated);
 
         // Create movie

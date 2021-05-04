@@ -30,12 +30,14 @@ public class SignUpController {
     private String username;
     private String email;
     private String password;
+    private String firstName;
+    private String surname;
 
     public String signUpUser(){
 
         boolean registered = false;
         try {
-            registered = userService.createUser(username, password, email);
+            registered = userService.createUser(username, password, email, firstName, surname);
         }catch (Exception e){
             //nothing to do
         }
@@ -84,4 +86,19 @@ public class SignUpController {
         this.password = password;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 }

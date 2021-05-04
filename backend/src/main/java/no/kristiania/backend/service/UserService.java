@@ -22,7 +22,7 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public boolean createUser(String username, String password, String email) {
+    public boolean createUser(String username, String password, String email, String firstName, String surname) {
         // Check if user exists
         if (em.find(User.class, username) != null) {
             return false;
@@ -34,6 +34,8 @@ public class UserService {
         User user = new User();
         user.setUsername(username);
         user.setEmail(email);
+        user.setFirstName(firstName);
+        user.setSurname(surname);
         user.setPassword(hashedPassword);
         user.setRoles(Collections.singleton("USER"));
         user.setEnabled(true);

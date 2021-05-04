@@ -27,6 +27,14 @@ public class User {
     private String password;
 
     @NotBlank
+    @Size(max = 64)
+    private String firstName;
+
+    @NotBlank
+    @Size(max = 64)
+    private String surname;
+
+    @NotBlank
     @Email
     private String email;
 
@@ -62,6 +70,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getEmail() {

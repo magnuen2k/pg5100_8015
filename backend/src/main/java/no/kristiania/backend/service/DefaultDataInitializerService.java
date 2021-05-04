@@ -32,8 +32,8 @@ public class DefaultDataInitializerService {
     @PostConstruct
     public void init() {
         // Create testing users to add ratings
-        attempt(() -> userService.createUser("test", "test", "test@test.no"));
-        attempt(() -> userService.createUser("dummy", "test", "dummy@test.no"));
+        attempt(() -> userService.createUser("test", "test", "test@test.no", "test", "testing"));
+        attempt(() -> userService.createUser("dummy", "test", "dummy@test.no", "dummy", "dummy"));
 
         // Add persons (actors and directors)
         Long p1 = attempt(() -> personService.createPerson(" James Caan"));

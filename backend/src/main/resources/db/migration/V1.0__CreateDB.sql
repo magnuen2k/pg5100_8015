@@ -7,7 +7,7 @@ create table person (id bigint not null, name varchar(64), primary key (id));
 create table person_director_for (person_id bigint not null, director_for_id bigint not null);
 create table review (id bigint not null, created_at timestamp not null, review_text varchar(300), stars integer not null check (stars<=5 AND stars>=1), author_username varchar(255) not null, movie_id bigint not null, primary key (id));
 create table user_roles (user_username varchar(255) not null, roles varchar(255));
-create table users (username varchar(64) not null, email varchar(255), enabled boolean not null, password varchar(255), primary key (username));
+create table users (username varchar(64) not null, email varchar(255), enabled boolean not null, first_name varchar(64), password varchar(255), surname varchar(64), primary key (username));
 alter table person_director_for add constraint UK_6utvgryit209l6dbvpg8216ci unique (director_for_id);
 alter table movie add constraint FKjk1pk1pnomf5tqi4vodeboo6e foreign key (director_id) references person;
 alter table movie_actors add constraint FKd1efjfqucfn5k48krp4se9pjd foreign key (actors_id) references person;

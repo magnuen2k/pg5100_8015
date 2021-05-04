@@ -7,9 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 
 // Selenium test structure is extended from code shown in lectures, but heavily modified
@@ -68,7 +65,7 @@ public abstract class SeleniumTestBase {
 
         // Click sign up and create user
         SignUpPO signUpPO = home.toSignUp();
-        home = signUpPO.createUser("newUserName", "password", "test2@test.no");
+        home = signUpPO.createUser("newUserName", "password", "test2@test.no", "new", "user");
 
         // Should be logged in now
         assertTrue(home.isLoggedIn());
@@ -109,7 +106,7 @@ public abstract class SeleniumTestBase {
 
         // Sign up to able to leave a review
         SignUpPO signUpPO = home.toSignUp();
-        home = signUpPO.createUser("Uniqueusername", "password", "test5@test.no");
+        home = signUpPO.createUser("Uniqueusername", "password", "test5@test.no", "unique", "user");
 
         // Should be logged in now
         assertTrue(home.isLoggedIn());
@@ -141,7 +138,7 @@ public abstract class SeleniumTestBase {
 
         // AUTHOR 1
         SignUpPO signUpPO = home.toSignUp();
-        home = signUpPO.createUser("user1", "password", "user1@test.no");
+        home = signUpPO.createUser("user1", "password", "user1@test.no", "user", "1");
         assertTrue(home.isLoggedIn());
 
         home.toStartingPage();
@@ -156,7 +153,7 @@ public abstract class SeleniumTestBase {
 
         // AUTHOR 2
         signUpPO = home.toSignUp();
-        home = signUpPO.createUser("user2", "password", "user2@test.no");
+        home = signUpPO.createUser("user2", "password", "user2@test.no", "user", "2");
 
         assertTrue(home.isLoggedIn());
 
@@ -172,7 +169,7 @@ public abstract class SeleniumTestBase {
 
         // AUTHOR 3
         signUpPO = home.toSignUp();
-        home = signUpPO.createUser("user3", "password", "user3@test.no");
+        home = signUpPO.createUser("user3", "password", "user3@test.no", "user", "3");
 
         assertTrue(home.isLoggedIn());
 
