@@ -122,4 +122,77 @@ public abstract class SeleniumTestBase {
         // Verify average stars has changed
         assertTrue(Double.parseDouble(home.getAverageStars("46")) < averageStars);
     }
+
+    @Test
+    public void testSorting() {
+        String reviewUser1 = "Review from user1";
+        String reviewUser2 = "Review from user2";
+        String reviewUser3 = "Review from user3";
+
+        // AUTHOR 1
+        SignUpPO signUpPO = home.toSignUp();
+        home = signUpPO.createUser("user1", "password", "user1@test.no");
+        assertTrue(home.isLoggedIn());
+
+        home.toStartingPage();
+
+        // Go to a movie page
+        MoviePO moviePO = home.toMoviePage(47);
+
+        assertTrue(moviePO.canGiveReview());
+
+        moviePO.giveReview(reviewUser1, "4");
+        home.doLogout();
+
+        // AUTHOR 2
+        signUpPO = home.toSignUp();
+        home = signUpPO.createUser("user2", "password", "user2@test.no");
+
+        assertTrue(home.isLoggedIn());
+
+        home.toStartingPage();
+
+        // Go to same movie page
+        moviePO = home.toMoviePage(47);
+
+        assertTrue(moviePO.canGiveReview());
+
+        moviePO.giveReview(reviewUser2, "3");
+        home.doLogout();
+
+        // AUTHOR 3
+        signUpPO = home.toSignUp();
+        home = signUpPO.createUser("user3", "password", "user3@test.no");
+
+        assertTrue(home.isLoggedIn());
+
+        home.toStartingPage();
+
+        // Go to same movie page
+        moviePO = home.toMoviePage(47);
+
+        assertTrue(moviePO.canGiveReview());
+
+        moviePO.giveReview(reviewUser3, "5");
+
+        // Check sorting
+        // Verify reviews came through
+        assertEquals(3, home.getElementsByClassname("reviewWrapper").size());
+        // Sort by rating
+        moviePO.sort("sortByTypeId", "Rating");
+        // Direction
+        moviePO.sort("sortByDirectionId", "ASC");
+        assertTrue(home.getElementsByClassname("reviewWrapper").get(0).getText().contains(reviewUser2));
+        moviePO.sort("sortByDirectionId", "DESC");
+        assertTrue(home.getElementsByClassname("reviewWrapper").get(0).getText().contains(reviewUser3));
+
+        // Sort by time
+        moviePO.sort("sortByTypeId", "Time");
+        // Direction
+        moviePO.sort("sortByDirectionId", "ASC");
+        assertTrue(home.getElementsByClassname("reviewWrapper").get(0).getText().contains(reviewUser1));
+        moviePO.sort("sortByDirectionId", "DESC");
+        assertTrue(home.getElementsByClassname("reviewWrapper").get(0).getText().contains(reviewUser3));
+
+    }
 }

@@ -45,22 +45,24 @@
                     <div class="allReviews">
                         <h1>Reviews</h1>
                         <c:forEach var="review" items="#{movieController.reviews}">
-                             <p>By: <h:outputText value="#{review.author.username}"/></p>
-                             <p>Review: <h:outputText value="#{review.reviewText}"/></p>
-                             <p>Stars: <h:outputText value="#{review.stars}"/></p>
+                            <div class="reviewWrapper">
+                                 <p>By: <h:outputText value="#{review.author.username}"/></p>
+                                 <p>Review: <h:outputText value="#{review.reviewText}"/></p>
+                                 <p>Stars: <h:outputText value="#{review.stars}"/></p>
+                            </div>
                          </c:forEach>
 
                         <h:form prependId="false">
                             <h:outputText value="Sort by"/>
-                            <h:selectOneMenu value="#{movieController.sortByRating}">
+                            <h:selectOneMenu value="#{movieController.sortByRating}" id="sortByTypeId">
                                 <f:selectItem itemValue="false" itemLabel="Time"/>
                                 <f:selectItem itemValue="true" itemLabel="Rating"/>
                             </h:selectOneMenu>
-                            <h:selectOneMenu value="#{movieController.sortAsc}">
+                            <h:selectOneMenu value="#{movieController.sortAsc}" id="sortByDirectionId">
                                 <f:selectItem itemValue="true" itemLabel="ASC"/>
                                 <f:selectItem itemValue="false" itemLabel="DESC"/>
                             </h:selectOneMenu>
-                            <h:commandButton class="movieBtn" value="Sort" action="#{movieController.reload}"/>
+                            <h:commandButton id="sortReviewBtn" class="movieBtn" value="Sort" action="#{movieController.reload}"/>
                         </h:form>
 
                         <sec:authenticated>

@@ -27,6 +27,13 @@ public class MoviePO extends LayoutPO {
         return getDriver().findElements(By.className("allReviews")).stream().anyMatch(e -> e.getText().contains(reviewText));
     }
 
+    public void sort(String id, String by) {
+        Select sort = new Select(getDriver().findElement(By.id(id)));
+        sort.selectByVisibleText(by);
+        clickAndWait("sortReviewBtn");
+
+    }
+
     @Override
     public boolean isOnPage() {
         return getDriver().getTitle().contains("Movie |");
