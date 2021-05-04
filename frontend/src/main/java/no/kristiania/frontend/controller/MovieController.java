@@ -62,7 +62,6 @@ public class MovieController implements Serializable {
         return false;
     }
 
-    // Give error if not working
     public String addReview(String username) {
         boolean ok = reviewService.addReview(selectedMovieId, username, reviewText, stars);
         return reload();

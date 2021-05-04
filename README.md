@@ -6,7 +6,7 @@ To run the application:
     * Application is then accessible in your browser at `http://localhost:8080`.
 
 To run all tests and build project
-* `mvn verify`
+* `mvn clean verify`
 
 When running the application, on can either sign up or use any of these premade users:
     
@@ -28,6 +28,7 @@ R4 NOTE: After experimenting with Selenium and Docker, I have learned that Selen
 Extras(R5)
 * Similar movies: Button accessible from specific movie page. Takes you to a new page listing all movies that share at least one of the genres with the specific movie.
     * Covered by Selenium test: `testGetSimilarMovies()`.
+    * Covered by backend (service) test: `testGetSimilarMovies()`
 * Expanded functionality: Sort reviews both asc and desc for either time or stars. These are selectable commands on a specific movie page.
     * Covered by Selenium test: `testSorting()`. This test is part of R4, but is expanded to cover this extra feature.
 * Implemented Docker with Selenium tests.
@@ -70,4 +71,7 @@ This is a simple application where users can leave reviews for movies. All navig
 
 ## Credits
 * All movie data is retrieved from `https://imdb.com`.
-* Code copied from class is credited in the source files.
+* All copied code from class is credited in the source files.
+
+## Final Note
+The zip file is named with my "KandidatNr" which is the unique ID I got with this exam.
