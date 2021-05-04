@@ -75,4 +75,23 @@ public class MovieService {
 
         return movies;
     }
+
+    public List<Movie> getSimilarMovies(long movieId) {
+        Movie movie = em.find(Movie.class, movieId);
+        List<Movie> similarMovies = new ArrayList<>();
+
+        for(Movie m : getAllMovies()) {
+            if(m.getId() != movieId) {
+                for(Genre g : movie.getGenres()) {
+                    if(m.getGenres().contains(g)) {
+                        similarMovies.add(m);
+                        System.out.println("Found similar movie");
+                        break;
+                    }
+                }
+            }
+        }
+
+        return similarMovies;
+    }
 }

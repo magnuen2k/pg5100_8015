@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         try {
             http.csrf().disable();
             http.authorizeRequests()
-                    .antMatchers("/", "/index.*", "/signup.*", "/assets/**", "/movie.*").permitAll()
+                    .antMatchers("/", "/index.*", "/signup.*", "/assets/**", "/movie.*", "/similarMovies.*").permitAll()
                     .antMatchers("/javax.faces.resource/**").permitAll()
                     .anyRequest().authenticated()
                     .and()

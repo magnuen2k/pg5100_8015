@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core"
+>
+
+<ui:composition template="layout.xhtml">
+
+    <ui:define name="title">
+
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h2 id="movieTitle">MovieMania</h2>
+
+        <div id="movies">
+            <c:forEach var="movie" items="#{movieController.similarMovies}">
+                <div class="movie">
+                    <p class="movieTitle">Title: <h:outputText value="#{movie.title}"/></p>
+                    <div class="movieDesc"><h:outputText value="#{movie.description}"/></div>
+                    <p>Director: <h:outputText value="#{movie.director.name}"/></p>
+                    <p>Genre:
+                        <c:forEach var="genre" items="#{movie.genres}">
+                            <h:outputText value="#{genre.name} "/>
+                        </c:forEach>
+                    </p>
+                    <p>Actors:
+                        <c:forEach var="actor" items="#{movie.actors}">
+                            <h:outputText value="#{actor.name} "/>
+                        </c:forEach>
+                    </p>
+                    <p>Released: <h:outputText value="#{movie.yearOfRelease}"/></p>
+                    <p>Average rating: <h:outputText id="averageRating-#{movie.id}" value="#{movieController.getAverageRating(movie.id)}"/></p>
+                    <h:form prependId="false">
+                        <h:commandButton id="id-#{movie.id}" class="movieBtn" action="#{movieController.openMoviePage(movie.id)}" value="Click for more details"/>
+                    </h:form>
+                </div>
+            </c:forEach>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
+</html>

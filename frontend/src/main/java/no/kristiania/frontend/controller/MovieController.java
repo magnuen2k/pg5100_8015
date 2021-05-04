@@ -33,6 +33,10 @@ public class MovieController implements Serializable {
         return movieService.getAllMovies();
     }
 
+    public List<Movie> getSimilarMovies() {
+        return movieService.getSimilarMovies(selectedMovieId);
+    }
+
     public String openMoviePage(long movieId) {
         selectedMovieId = movieId;
         return "/movie.jsf?faces-redirect=true";
