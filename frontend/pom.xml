@@ -150,7 +150,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <finalName>exam</finalName>
+                    <finalName>pg5100_8015</finalName>
                     <classifier>exec</classifier>
                 </configuration>
                 <executions>

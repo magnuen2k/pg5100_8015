@@ -41,11 +41,6 @@ public abstract class SeleniumTestBase {
     }
 
     @Test
-    public void testPort() {
-        assertThat(getServerPort(), is(greaterThan(0)));
-    }
-
-    @Test
     public void testDefaultMovies() {
         // Should be on home page when test is starting
         // Verify not logged in
@@ -94,6 +89,17 @@ public abstract class SeleniumTestBase {
 
         // verify that review is there
         assertTrue(moviePO.verifyReview(reviewText));
+
+        // Log out
+        home.doLogout();
+        home.toStartingPage();
+
+        // Go to same movie page
+        moviePO = home.toMoviePage(50);
+
+        // verify that review is still there
+        assertTrue(moviePO.verifyReview(reviewText));
+
     }
 
     @Test
@@ -128,6 +134,7 @@ public abstract class SeleniumTestBase {
 
     @Test
     public void testSorting() {
+        assertFalse(home.isLoggedIn());
         String reviewUser1 = "Review from user1";
         String reviewUser2 = "Review from user2";
         String reviewUser3 = "Review from user3";
