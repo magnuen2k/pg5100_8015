@@ -179,7 +179,7 @@ public abstract class SeleniumTestBase {
         moviePO.giveReview(reviewUser3, "5");
 
         // Check sorting
-        // Verify reviews came through
+        // Verify reviews came through (Testing movie with no sample/fake reviews)
         assertEquals(3, home.getElementsByClassname("reviewWrapper").size());
         // Sort by rating
         moviePO.sort("sortByTypeId", "Rating");

@@ -96,7 +96,7 @@ public class DefaultDataInitializerService {
         String d10 = "In a self-destructing world, a vengeful Australian policeman sets out to stop a violent motorcycle gan";
 
         // Add movies
-        Long movie1 = attempt(() -> movieService.createMovie("The Godfather", p8, 1972, Arrays.asList(crime, drama), Arrays.asList(p21, p2), d1));
+        Long movie1 = attempt(() -> movieService.createMovie("The Godfather", p8, 1972, Arrays.asList(crime, drama), Arrays.asList(p21, p2, p1), d1));
         Long movie2 = attempt(() -> movieService.createMovie("Casablanca", p24, 1942, Arrays.asList(drama, romance, war), Arrays.asList(p14, p15, p26), d2));
         Long movie3 = attempt(() -> movieService.createMovie("American Graffiti", p9, 1973, Arrays.asList(comedy, drama), Arrays.asList(p30, p32, p27), d3));
         Long movie4 = attempt(() -> movieService.createMovie("Pulp Fiction", p28, 1994, Arrays.asList(crime, drama), Arrays.asList(p18, p34, p33), d4));
@@ -108,7 +108,10 @@ public class DefaultDataInitializerService {
         Long movie10 = attempt(() -> movieService.createMovie("Mad Max", p10, 1979, Arrays.asList(sciFi, adventure, action, thriller), Arrays.asList(p23, p17, p13), d10));
 
         // Add reviews
-        attempt(() -> reviewService.addReview(movie1, "test", "very good movie", 5));
+        attempt(() -> reviewService.addReview(movie1, "test", "Very good movie!", 5));
+        attempt(() -> reviewService.addReview(movie3, "test", "Not a fan...", 3));
+        attempt(() -> reviewService.addReview(movie6, "test", "Love this!!", 5));
+        attempt(() -> reviewService.addReview(movie4, "test", "Good one", 4));
     }
 
     // This functions is copied from class
