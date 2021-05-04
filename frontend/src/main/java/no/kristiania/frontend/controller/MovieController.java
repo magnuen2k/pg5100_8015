@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,8 +47,10 @@ public class MovieController implements Serializable {
         return movieService.getMovie(movieId);
     }
 
-    public double getAverageRating(long movieId) {
-        return reviewService.getAverageReview(movieId);
+    public String getAverageRating(long movieId) {
+        double d = reviewService.getAverageReview(movieId);
+        DecimalFormat df = new DecimalFormat("#.#");
+        return df.format(d);
     }
 
     public boolean reviewGivenByUser(String username) {

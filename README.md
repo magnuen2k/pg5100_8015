@@ -22,15 +22,15 @@ When running the application, on can either sign up or use any of these premade 
 ## Covered exam topics
  
 I did R1, R2, R3, R4 and R5.
- 
-R4 Note: All the Selenium tests required are implemented. Function `testSorting()` have failed unexpectedly twice, but failure have not been reproducible for the last 100 test runs. Therefore, I decided to include the test.  
+
+R4 NOTE: After experimenting with Selenium and Docker, I have learned that Selenium tests are heavily dependent on page load. One of my Selenium tests have failed 1 out of 50 times, and I suspect this is a page load issue. 
  
 Extras(R5)
 * Similar movies: Button accessible from specific movie page. Takes you to a new page listing all movies that share at least one of the genres with the specific movie.
     * Covered by Selenium test: `testGetSimilarMovies()`.
 * Expanded functionality: Sort reviews both asc and desc for either time or stars. These are selectable commands on a specific movie page.
     * Covered by Selenium test: `testSorting()`. This test is part of R4, but is expanded to cover this extra feature.
-* DOCKER HVIS JEG TAR DET MED
+* Implemented Docker with Selenium tests.
 
 ## Entity structure
 The following entities are defined according to R1:
