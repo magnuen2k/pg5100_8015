@@ -72,4 +72,22 @@ public class MovieServiceTest extends ServiceTestBase {
         assertEquals(movieId1, movieService.getMovie(movieId1).getId());
 
     }
+
+    @Test
+    public void testGetSimilarMovies() {
+        Long directorId = personService.createPerson(uniqueName);
+        Long actorId = personService.createPerson(uniqueName);
+        Long genreId = genreService.createGenre(uniqueName);
+        Long genreId2 = genreService.createGenre(uniqueName);
+
+        Long movieId1 = movieService.createMovie(uniqueName, directorId, 2004, Collections.singletonList(genreId), Collections.singletonList(actorId), "test desc");
+        Long movieId2 = movieService.createMovie(uniqueName, directorId, 2001, Collections.singletonList(genreId2), Collections.singletonList(actorId), "very informative description");
+        Long movieId3 = movieService.createMovie(uniqueName, directorId, 2001, Collections.singletonList(genreId), Collections.singletonList(actorId), "very informative description");
+        Long movieId4 = movieService.createMovie(uniqueName, directorId, 2001, Collections.singletonList(genreId2), Collections.singletonList(actorId), "very informative description");
+
+        // Verify that movie3 get returned at position 0
+        assertEquals(movieId3, movieService.getSimilarMovies(movieId1).get(0).getId());
+        // Movie 2 does not have same genre as movie 1 and should be filtered out
+        assertFalse(movieService.getSimilarMovies(movieId1).contains(movieService.getMovie(movieId2)));
+    }
 }

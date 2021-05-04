@@ -85,7 +85,6 @@ public class MovieService {
                 for(Genre g : movie.getGenres()) {
                     if(m.getGenres().contains(g)) {
                         similarMovies.add(m);
-                        System.out.println("Found similar movie");
                         break;
                     }
                 }

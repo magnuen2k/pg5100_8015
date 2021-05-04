@@ -3,9 +3,12 @@ package no.kristiania.selenium;
 import no.kristiania.selenium.po.IndexPO;
 import no.kristiania.selenium.po.MoviePO;
 import no.kristiania.selenium.po.SignUpPO;
+import no.kristiania.selenium.po.SimilarMoviesPO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -200,6 +203,20 @@ public abstract class SeleniumTestBase {
         assertTrue(home.getElementsByClassname("reviewWrapper").get(0).getText().contains(reviewUser1));
         moviePO.sort("sortByDirectionId", "DESC");
         assertTrue(home.getElementsByClassname("reviewWrapper").get(0).getText().contains(reviewUser3));
+
+    }
+
+    @Test
+    public void testGetSimilarMovies() {
+        assertFalse(home.isLoggedIn());
+
+        MoviePO moviePO = home.toMoviePage(50);
+
+        List<String> genreNames = moviePO.getGenres();
+
+        SimilarMoviesPO similarMoviesPO = moviePO.toSimilarMovies();
+
+        assertTrue(similarMoviesPO.displaysSimilarMovies(genreNames));
 
     }
 }

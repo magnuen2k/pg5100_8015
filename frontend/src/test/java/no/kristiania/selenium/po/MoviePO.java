@@ -2,7 +2,13 @@ package no.kristiania.selenium.po;
 
 import no.kristiania.selenium.PageObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MoviePO extends LayoutPO {
 
@@ -32,8 +38,21 @@ public class MoviePO extends LayoutPO {
 
     }
 
+    public SimilarMoviesPO toSimilarMovies() {
+        clickAndWait("similarMoviesId");
+
+        SimilarMoviesPO po = new SimilarMoviesPO(this);
+        assertTrue(po.isOnPage());
+
+        return po;
+    }
+
+    public List<String> getGenres() {
+        return getDriver().findElements(By.className("genreNameId")).stream().map(WebElement::getText).collect(Collectors.toList());
+    }
+
     @Override
     public boolean isOnPage() {
-        return getDriver().getTitle().contains("Movie |");
+        return getDriver().getTitle().contains("Movie");
     }
 }
