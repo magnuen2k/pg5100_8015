@@ -210,12 +210,16 @@ public abstract class SeleniumTestBase {
     public void testGetSimilarMovies() {
         assertFalse(home.isLoggedIn());
 
+        // Go to a moviepage
         MoviePO moviePO = home.toMoviePage(50);
 
+        // Get genres of selected movie
         List<String> genreNames = moviePO.getGenres();
 
+        // Go to similar movies page
         SimilarMoviesPO similarMoviesPO = moviePO.toSimilarMovies();
 
+        // All movies should have at least one of the genres from the selected movie
         assertTrue(similarMoviesPO.displaysSimilarMovies(genreNames));
 
     }

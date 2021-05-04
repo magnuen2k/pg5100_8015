@@ -126,9 +126,6 @@ public class DefaultDataInitializerService {
         attempt(() -> reviewService.addReview(movie1, "foo_9", "Very good", 5));
         attempt(() -> reviewService.addReview(movie1, "foo_10", "Not my favorite..", 3));
         attempt(() -> reviewService.addReview(movie1, "foo_3", "My favorite!", 5));
-        /*attempt(() -> reviewService.addReview(movie2, "foo_4", "Very good!", 5));
-        attempt(() -> reviewService.addReview(movie2, "foo_5", "Good!", 4));
-        attempt(() -> reviewService.addReview(movie2, "foo_8", "Not my favorite..", 3));*/
         attempt(() -> reviewService.addReview(movie3, "foo_8", "Not a fan...", 3));
         attempt(() -> reviewService.addReview(movie3, "foo_2", "Not a fan...", 2));
         attempt(() -> reviewService.addReview(movie3, "foo_5", "Very nice", 4));
